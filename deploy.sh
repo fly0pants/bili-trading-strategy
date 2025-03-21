@@ -59,8 +59,8 @@ git commit -m "Update GitHub Pages content"
 git push origin gh-pages
 
 # Switch back to master branch
-echo -e "${GREEN}Switching back to master branch...${NC}"
-git checkout master
+# echo -e "${GREEN}Switching back to master branch...${NC}"
+# git checkout master
 
 echo -e "${GREEN}Deployment complete! Your site should be available at:${NC}"
 echo -e "${YELLOW}https://fly0pants.github.io/bili-trading-strategy/${NC}" 
