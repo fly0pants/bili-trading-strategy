@@ -1,0 +1,15 @@
+theme: jekyll-theme-cayman
+title: Bilibili Trading Strategy
+description: A quantitative trading strategy implementation for Bilibili (BILI) stock
+show_downloads: true
+google_analytics:
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# GitHub Pages settings
+baseurl: "/bili-trading-strategy"
+url: "https://fly0pants.github.io"
+include: [".html"]
+exclude: ["node_modules", "*.gem", "*.gemspec", "Gemfile", "Gemfile.lock"]

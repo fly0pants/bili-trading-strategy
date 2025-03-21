@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bilibili Trading Strategy</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../static/css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">BILI Trading Strategy</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#overview">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#performance">Performance</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="data.html">Detailed Data</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#strategy">Strategy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#usage">Usage</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5">
+      <div class="container">
+        <h1>Bilibili (BILI) Trading Strategy</h1>
+        <p class="lead">
+          A quantitative trading strategy implementation using Python and
+          yfinance
+        </p>
+      </div>
+    </header>
+
+    <section id="overview" class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Overview</h2>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <p>
+              This project implements a comprehensive trading strategy for
+              Bilibili (BILI) stock using multiple technical indicators and
+              dynamic support/resistance levels to generate trading signals.
+            </p>
+            <div class="d-flex justify-content-center mt-4">
+              <div class="card bg-light px-4 py-3 text-center mx-2">
+                <h4>66%+</h4>
+                <p class="mb-0">Win Rate</p>
+              </div>
+              <div class="card bg-light px-4 py-3 text-center mx-2">
+                <h4>15%+</h4>
+                <p class="mb-0">Annual Return</p>
+              </div>
+              <div class="card bg-light px-4 py-3 text-center mx-2">
+                <h4>~1.5</h4>
+                <p class="mb-0">Sharpe Ratio</p>
+              </div>
+              <div class="card bg-light px-4 py-3 text-center mx-2">
+                <h4>< 9%</h4>
+                <p class="mb-0">Max Drawdown</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="performance" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-4">Performance Analysis</h2>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>Period</th>
+                <th>Total Return</th>
+                <th>Ann. Return</th>
+                <th>Sharpe</th>
+                <th>Max DD</th>
+                <th>Trades</th>
+                <th>Win Rate</th>
+                <th>Profit Factor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>3M</td>
+                <td>4.71%</td>
+                <td>16.67%</td>
+                <td>1.47</td>
+                <td>-3.96%</td>
+                <td>3</td>
+                <td>66.67%</td>
+                <td>2.24</td>
+              </tr>
+              <tr>
+                <td>6M</td>
+                <td>8.92%</td>
+                <td>18.45%</td>
+                <td>1.62</td>
+                <td>-5.83%</td>
+                <td>7</td>
+                <td>71.43%</td>
+                <td>2.51</td>
+              </tr>
+              <tr>
+                <td>12M</td>
+                <td>15.34%</td>
+                <td>15.34%</td>
+                <td>1.38</td>
+                <td>-8.92%</td>
+                <td>14</td>
+                <td>64.29%</td>
+                <td>2.18</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="text-center mt-3">
+          <a href="data.html" class="btn btn-primary"
+            >View Detailed Performance Data</a
+          >
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">3-Month Backtest</h5>
+              </div>
+              <div class="card-body text-center">
+                <img
+                  src="../static/img/BILI_backtest_3M.png"
+                  alt="3-Month Backtest Results"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">6-Month Backtest</h5>
+              </div>
+              <div class="card-body text-center">
+                <img
+                  src="../static/img/BILI_backtest_6M.png"
+                  alt="6-Month Backtest Results"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">12-Month Backtest</h5>
+              </div>
+              <div class="card-body text-center">
+                <img
+                  src="../static/img/BILI_backtest_12M.png"
+                  alt="12-Month Backtest Results"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 text-center">
+          <h4>Period Comparison</h4>
+          <img
+            src="../static/img/period_comparison.png"
+            alt="Period Comparison"
+            class="img-fluid mt-3 border"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="strategy" class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Strategy Components</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Technical Indicators</h5>
+              </div>
+              <div class="card-body">
+                <ul>
+                  <li>Simple Moving Averages (5 and 20-day)</li>
+                  <li>Relative Strength Index (RSI)</li>
+                  <li>Moving Average Convergence Divergence (MACD)</li>
+                  <li>Bollinger Bands</li>
+                  <li>Volume-weighted price analysis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Entry Signals</h5>
+              </div>
+              <div class="card-body">
+                <ul>
+                  <li>Support/Resistance levels</li>
+                  <li>Momentum with volume confirmation</li>
+                  <li>Moving average crossovers</li>
+                  <li>RSI oversold/overbought</li>
+                  <li>Bollinger Band breakouts</li>
+                  <li>Price reversal patterns</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Risk Management</h5>
+              </div>
+              <div class="card-body">
+                <ul>
+                  <li>Position sizing (50% of capital)</li>
+                  <li>Stop-loss (5%)</li>
+                  <li>Take-profit (15%)</li>
+                  <li>Dynamic trailing stop-loss</li>
+                  <li>Maximum drawdown constraints</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="usage" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-4">Usage</h2>
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="card">
+              <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Installation</h5>
+              </div>
+              <div class="card-body">
+                <pre
+                  class="bg-dark text-light p-3 rounded"
+                ><code>git clone https://github.com/fly0pants/bili-trading-strategy.git
+cd bili-trading-strategy
+pip install -r requirements.txt</code></pre>
+              </div>
+            </div>
+
+            <div class="card mt-4">
+              <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Basic Usage</h5>
+              </div>
+              <div class="card-body">
+                <pre
+                  class="bg-dark text-light p-3 rounded"
+                ><code>from trading_strategy import BilibiliTradingStrategy
+
+# Initialize strategy
+strategy = BilibiliTradingStrategy()
+
+# Download data and run backtest
+start_date = '2023-01-01'
+end_date = '2023-12-31'
+data = strategy.download_data(start_date, end_date)
+
+# Calculate indicators and generate signals
+strategy.calculate_indicators()
+strategy.generate_signals()
+
+# Run backtest
+strategy.backtest()
+
+# Analyze performance
+results = strategy.analyze_performance()
+
+# Plot results
+strategy.plot_results()
+plt.show()</code></pre>
+              </div>
+            </div>
+
+            <div class="card mt-4">
+              <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Running Multi-Period Tests</h5>
+              </div>
+              <div class="card-body">
+                <pre
+                  class="bg-dark text-light p-3 rounded"
+                ><code>python test_strategy.py</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+      <div class="container">
+        <p class="mb-0">
+          © 2024 Bilibili Trading Strategy |
+          <a
+            href="https://github.com/fly0pants/bili-trading-strategy"
+            class="text-white"
+            >GitHub Repository</a
+          >
+        </p>
+        <p class="mt-2 small">
+          Disclaimer: This trading strategy is for educational purposes only.
+          Past performance does not guarantee future results.
+        </p>
+        <div class="mt-3">
+          <a href="index.html" class="text-white mx-2">Home</a> |
+          <a href="data.html" class="text-white mx-2">Detailed Data</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
