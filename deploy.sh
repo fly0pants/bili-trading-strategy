@@ -5,6 +5,7 @@
 # Colors for terminal output
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 echo -e "${YELLOW}Starting deployment to GitHub Pages...${NC}"
@@ -19,12 +20,20 @@ fi
 echo -e "${GREEN}Copying README.md to docs directory...${NC}"
 cp README.md docs/
 
-# Copy any new/updated images to the correct location
-echo -e "${GREEN}Copying images to static/img directory...${NC}"
+# Create necessary directories if they don't exist
+mkdir -p docs/img docs/css docs/js
+
+# Copy images to docs/img directory
+echo -e "${GREEN}Copying images to docs/img directory...${NC}"
 cp -r static/img/* docs/img/ 2>/dev/null || :
 
-# Create necessary directories if they don't exist
-mkdir -p docs/img
+# Copy CSS to docs/css directory
+echo -e "${GREEN}Copying CSS to docs/css directory...${NC}"
+cp -r static/css/* docs/css/ 2>/dev/null || :
+
+# Copy JS to docs/js directory
+echo -e "${GREEN}Copying JS to docs/js directory...${NC}"
+cp -r static/js/* docs/js/ 2>/dev/null || :
 
 # Initialize gh-pages branch if it doesn't exist
 if ! git rev-parse --verify gh-pages >/dev/null 2>&1; then
